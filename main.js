@@ -1,10 +1,13 @@
 
 // VARIAVEIS PARA INTERAÇÃO COM O DOCUMENTO HTML
 const html = document.querySelector('html')
+
 //VARIAVEIS DE BOTOES DA PAGINA
 const focoBt = document.querySelector('.app__card-button--foco')
 const curtoBt = document.querySelector('.app__card-button--curto')
 const longoBt = document.querySelector('.app__card-button--longo')
+
+
 //VARIAVEIS DE TEXTOS E IMAGENS DA PAGINA HTML
 const startPauseBt = document.querySelector('#start-pause')
 const iniciarOuPausarBt = document.querySelector('#start-pause span')
@@ -16,13 +19,19 @@ const tempoNaTela = document.querySelector('#timer')
 const titulo = document.querySelector('.app__title')
 const botoes = document.querySelectorAll('.app__card-button')
 const musicaFocoInput = document.querySelector('#alternar-musica')
+
+
 //VARIAVEIS DE MUSICAS PARA O PROJETO
-const musica = new Audio('/sons/luna-rise-part-one.mp3')
-const playBt = new Audio('/sons/play.wav')
-const pauseBt = new Audio('/sons/pause.mp3')
-const finish = new Audio('/sons/beep.mp3')
+const musica = new Audio('./sons/luna-rise-part-one.mp3')
+const playBt = new Audio('./sons/play.wav')
+const pauseBt = new Audio('./sons/pause.mp3')
+const finish = new Audio('./sons/beep.mp3')
+
+
 //VARIAVEL PARA QUANDO A MUSICA FOR ATIVADA REPITA UM LOOP INFINITO ATE ATINGIR O LIMITE DO TEMPORIZADOR
 musica.loop = true
+
+
 // VARIAVEL PARA CRIAR A FUNÇÃO DE TEMPO DECRESCENTE
 let tempoDecorridoEmSegundos = 1500
 let intervaloId = null
@@ -61,7 +70,7 @@ function alterarContexto(contexto){
         contexto.classList.remove('active')
     })
     html.setAttribute('data-contexto', contexto)
-    banner.setAttribute('src', `/imagens/${contexto}.png`)
+    banner.setAttribute('src', `./imagens/${contexto}.png`)
     switch (contexto) {
         case "foco":
         titulo.innerHTML = `
@@ -109,13 +118,13 @@ function iniciarOuPausar() {
     playBt.play()
     intervaloId = setInterval(contagemRegressiva, 1000)
     iniciarOuPausarBt.textContent = "Pausar"
-    iconPlayPause.setAttribute('src', '/imagens/pause.png')
+    iconPlayPause.setAttribute('src', './imagens/pause.png')
 }
 //CRIA A FUNÇÃO QUE ZERA O CRONOMETRO E ALTERA O TEXTO DO BOTAO INICIAR E ICONE AO PAUSAR
 function zerar(){
     clearInterval(intervaloId)
     iniciarOuPausarBt.textContent = "Iniciar"
-    iconPlayPause.setAttribute('src', '/imagens/play_arrow.png')
+    iconPlayPause.setAttribute('src', './imagens/play_arrow.png')
     intervaloId = null
 }
 //CRIA A FUNÇÃO QUE DEFINE O FORMATO DO CONTADOR EXIBIDO NA TELA.
